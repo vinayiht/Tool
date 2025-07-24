@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMTP Email Tester - Professional Email Server Testing Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .ad-placeholder {
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-weight: bold;
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Leaderboard Ad -->
+    <div class="ad-placeholder h-24 mb-4">
+        Google AdSense - Leaderboard (728x90)
+    </div>
+
+    <!-- Header -->
+    <header class="gradient-bg text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-envelope-open-text text-3xl"></i>
+                    <h1 class="text-3xl font-bold">SMTP Email Tester</h1>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#tester" class="hover:text-gray-200 transition-colors">Tester</a>
+                    <a href="#features" class="hover:text-gray-200 transition-colors">Features</a>
+                    <a href="#documentation" class="hover:text-gray-200 transition-colors">Docs</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-5xl font-bold mb-6">Test Your SMTP Server Settings</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Professional-grade SMTP testing tool with comprehensive deliverability analysis, authentication testing, and detailed error reporting for email marketers and developers.</p>
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <div class="glass-effect px-6 py-3 rounded-lg">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    SSL/TLS Testing
+                </div>
+                <div class="glass-effect px-6 py-3 rounded-lg">
+                    <i class="fas fa-key mr-2"></i>
+                    Authentication Support
+                </div>
+                <div class="glass-effect px-6 py-3 rounded-lg">
+                    <i class="fas fa-chart-line mr-2"></i>
+                    Deliverability Analysis
+                </div>
+                <div class="glass-effect px-6 py-3 rounded-lg">
+                    <i class="fas fa-bug mr-2"></i>
+                    Error Diagnostics
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Main Content -->
+            <div class="lg:w-2/3">
+                <!-- SMTP Tester Form -->
+                <section id="tester" class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-server mr-3 text-blue-600"></i>
+                        SMTP Server Configuration
+                    </h3>
+                    
+                    <form id="smtpForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-server mr-2"></i>SMTP Host
+                                </label>
+                                <input type="text" id="smtpHost" placeholder="smtp.gmail.com" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-plug mr-2"></i>Port
+                                </label>
+                                <select id="smtpPort" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="587">587 (TLS)</option>
+                                    <option value="465">465 (SSL)</option>
+                                    <option value="25">25 (Plain)</option>
+                                    <option value="2587">2587 (Alternative)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-user mr-2"></i>Username
+                                </label>
+                                <input type="text" id="smtpUsername" placeholder="your-email@domain.com"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-lock mr-2"></i>Password
+                                </label>
+                                <input type="password" id="smtpPassword" placeholder="Your password or app password"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-envelope mr-2"></i>Test Email Address
+                            </label>
+                            <input type="email" id="testEmail" placeholder="test@example.com"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+
+                        <div class="border-t pt-6">
+                            <h4 class="text-lg font-semibold mb-4 text-gray-800">Advanced Options</h4>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        <i class="fas fa-shield-alt mr-2"></i>Encryption
+                                    </label>
+                                    <select id="encryption" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option value="tls">STARTTLS</option>
+                                        <option value="ssl">SSL/TLS</option>
+                                        <option value="none">None</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        <i class="fas fa-key mr-2"></i>Authentication
+                                    </label>
+                                    <select id="authentication" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option value="plain">PLAIN</option>
+                                        <option value="login">LOGIN</option>
+                                        <option value="cram-md5">CRAM-MD5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button type="submit" id="testBtn" 
+                                    class="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-8 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+                                <i class="fas fa-play mr-2"></i>Start SMTP Test
+                            </button>
+                            <button type="button" id="clearBtn"
+                                    class="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-eraser mr-2"></i>Clear
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Test Results -->
+                <section id="results" class="bg-white rounded-lg shadow-lg p-8 mb-8" style="display: none;">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-chart-bar mr-3 text-green-600"></i>
+                        Test Results
+                    </h3>
+                    
+                    <div id="testProgress" class="mb-6">
+                        <div class="flex items-center mb-4">
+                            <div class="pulse-animation">
+                                <i class="fas fa-spinner fa-spin text-blue-600 text-2xl mr-3"></i>
+                            </div>
+                            <span class="text-lg">Running SMTP tests...</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div id="progressBar" class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div id="testDetails" style="display: none;">
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-green-800 mb-3">
+                                    <i class="fas fa-check-circle mr-2"></i>Connection Status
+                                </h4>
+                                <div id="connectionStatus" class="space-y-2"></div>
+                            </div>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-blue-800 mb-3">
+                                    <i class="fas fa-info-circle mr-2"></i>Server Information
+                                </h4>
+                                <div id="serverInfo" class="space-y-2"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-8">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">
+                                <i class="fas fa-chart-pie mr-2"></i>Deliverability Score
+                            </h4>
+                            <div class="bg-gray-50 rounded-lg p-6">
+                                <canvas id="deliverabilityChart" style="height: 200px;"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-purple-800 mb-3">
+                                    <i class="fas fa-shield-alt mr-2"></i>Security Test
+                                </h4>
+                                <div id="securityTest" class="space-y-2"></div>
+                            </div>
+                            <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-orange-800 mb-3">
+                                    <i class="fas fa-key mr-2"></i>Authentication
+                                </h4>
+                                <div id="authTest" class="space-y-2"></div>
+                            </div>
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-red-800 mb-3">
+                                    <i class="fas fa-exclamation-triangle mr-2"></i>Issues Found
+                                </h4>
+                                <div id="issuesFound" class="space-y-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Features Section -->
+                <section id="features" class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-star mr-3 text-yellow-500"></i>
+                        Why Choose Our SMTP Tester?
+                    </h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-blue-100 p-3 rounded-lg">
+                                    <i class="fas fa-bolt text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">Lightning Fast Testing</h4>
+                                    <p class="text-gray-600">Get comprehensive SMTP test results in seconds with our optimized testing engine.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-green-100 p-3 rounded-lg">
+                                    <i class="fas fa-shield-check text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">Complete Security Analysis</h4>
+                                    <p class="text-gray-600">Test SSL/TLS encryption, certificate validity, and security configurations.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-purple-100 p-3 rounded-lg">
+                                    <i class="fas fa-cogs text-purple-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">Advanced Configuration</h4>
+                                    <p class="text-gray-600">Support for all major authentication methods and encryption protocols.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-red-100 p-3 rounded-lg">
+                                    <i class="fas fa-bug text-red-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">Detailed Error Reporting</h4>
+                                    <p class="text-gray-600">Get specific error messages and recommendations for fixing issues.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-yellow-100 p-3 rounded-lg">
+                                    <i class="fas fa-chart-line text-yellow-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">Deliverability Insights</h4>
+                                    <p class="text-gray-600">Analyze your email deliverability score and get improvement suggestions.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-indigo-100 p-3 rounded-lg">
+                                    <i class="fas fa-mobile-alt text-indigo-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">Mobile Responsive</h4>
+                                    <p class="text-gray-600">Test your SMTP settings from any device with our responsive design.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar with Ad -->
+            <div class="lg:w-1/3">
+                <div class="sticky top-8 space-y-8">
+                    <!-- Sidebar Ad -->
+                    <div class="ad-placeholder h-96">
+                        Google AdSense - Sidebar (300x250)
+                    </div>
+                    
+                    <!-- Quick Tips -->
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h4 class="text-lg font-bold mb-4 text-gray-800">
+                            <i class="fas fa-lightbulb mr-2 text-yellow-500"></i>
+                            Quick Tips
+                        </h4>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h5 class="font-semibold text-blue-800 mb-2">Gmail Users</h5>
+                                <p class="text-sm text-blue-700">Use port 587 with STARTTLS and your app password instead of your regular password.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h5 class="font-semibold text-green-800 mb-2">Office 365</h5>
+                                <p class="text-sm text-green-700">Use smtp.office365.com with port 587 and modern authentication.</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h5 class="font-semibold text-purple-800 mb-2">Security Tip</
